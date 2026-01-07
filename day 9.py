@@ -58,10 +58,9 @@ while True:
     # =============================
     # MASKING
     # =============================
-    mask_red = (
-        cv2.inRange(hsv, lower_red1, upper_red1) +
-        cv2.inRange(hsv, lower_red2, upper_red2)
-    )
+    mask_red1 = cv2.inRange(hsv, lower_red1, upper_red1)
+    mask_red2 = cv2.inRange(hsv, lower_red2, upper_red2)
+    mask_red = cv2.bitwise_or(mask_red1, mask_red2)
 
     mask_yellow = cv2.inRange(hsv, lower_yellow, upper_yellow)
     mask_green  = cv2.inRange(hsv, lower_green, upper_green)
